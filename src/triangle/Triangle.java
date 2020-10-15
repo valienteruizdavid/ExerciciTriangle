@@ -6,21 +6,17 @@ public class Triangle {
     
     private double base;
     private double altura;
-    private double h;
+ 
 
-    public Triangle(double base, double altura, double h){
+    public Triangle(double base, double altura){
         this.base = base;
         this.altura = altura;
-        this.h = h;
         //Si la base, l'altura o el costat son 0 o menor, sortirà e missatge d'error corresponent.
         if(this.base <= 0){
            Excepcio ex = new Excepcio(1);
            throw new IllegalArgumentException(ex.missatgeError()); 
         }else if(this.altura <= 0){
           Excepcio ex = new Excepcio(2);
-           throw new IllegalArgumentException(ex.missatgeError());  
-        }else if(this.h <= 0){
-          Excepcio ex = new Excepcio(3);
            throw new IllegalArgumentException(ex.missatgeError());  
         }
     }
@@ -34,14 +30,7 @@ public class Triangle {
         
     }
 
-    public void setH(double h) { 
-        
-        this.h = h;   
-    }
-    
     public double getBase(){
-        
-        
         return base;
     }
     
@@ -54,21 +43,12 @@ public class Triangle {
             
     }
     
-    public double getH() {
-        Excepcio ex = new Excepcio(3);
-        if(h <= 0){
-            throw new IllegalArgumentException(ex.missatgeError());
-        }
-        return h;
-    }
-    
     public double perimetre(){
-        double resultat = base+altura+altura;
-        return resultat;
+        return hipotenusa() * 2;
     }
     
     public double area(){
-        double resultat = (base*h)/2;
+        double resultat = base*altura/2;
         return resultat;
     }
 
@@ -77,11 +57,15 @@ public class Triangle {
         return "Triangle{" + "base=" + base + ", altura=" + altura + '}';
     }
     
+    private double hipotenusa(){
+       return Math.sqrt(Math.pow(base/2,2.0)+Math.pow(altura,2.0));
+    }
+    
     
     
     
     public static void main(String[] args) {
-        Triangle t = new Triangle(10,4,8);
+        Triangle t = new Triangle(12,16.16);
         System.out.println("TRIANGLE");
         System.out.println(t);
         System.out.println("==========================");

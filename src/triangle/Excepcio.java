@@ -22,9 +22,6 @@ public class Excepcio extends Exception {
             case 2:
                 resultat = "El costat no pot ser 0 ni negatiu";
                 break;
-            case 3:
-                resultat = "L'altura no pot ser 0 ni negatiu";
-                break;
         }
         return resultat;
     }
